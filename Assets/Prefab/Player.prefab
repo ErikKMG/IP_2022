@@ -1239,10 +1239,10 @@ GameObject:
   - component: {fileID: 5408644363387365900}
   - component: {fileID: 5408644363387365891}
   - component: {fileID: 5408644363387365890}
-  - component: {fileID: 5408644363387365889}
-  - component: {fileID: 7496099988332020028}
-  - component: {fileID: 5408644363387365895}
   - component: {fileID: 874529092639878083}
+  - component: {fileID: 7487759252719336419}
+  - component: {fileID: 6036675307726693490}
+  - component: {fileID: 1667259366768991217}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1378,7 +1378,25 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5408644363387365889
+--- !u!114 &874529092639878083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5408644363387365894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73110a01c17a5c448b1f471b67c9439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 
+  nextState: 
+  HealthDigit: {fileID: 1179497860294560902}
+  HealthTime: 2
+  HurtTime: 1
+  pain: 0
+--- !u!114 &7487759252719336419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1390,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126a0251ff9f9d14ab932c6ae5a75099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7496099988332020028
+--- !u!114 &6036675307726693490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1415,7 +1433,7 @@ MonoBehaviour:
   AKBulletCount: {fileID: 1606450729525330299}
   AKTotalAmmo: {fileID: 2399192145610840367}
   AKSlice: {fileID: 623004777559836167}
---- !u!114 &5408644363387365895
+--- !u!114 &1667259366768991217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1430,24 +1448,6 @@ MonoBehaviour:
   PlayerCamera: {fileID: 5408644363519403669}
   xSen: 10
   ySen: 10
---- !u!114 &874529092639878083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408644363387365894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73110a01c17a5c448b1f471b67c9439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 
-  nextState: 
-  HealthDigit: {fileID: 1179497860294560902}
-  HealthTime: 2
-  HurtTime: 1
-  pain: 0
 --- !u!1 &5408644363519403668
 GameObject:
   m_ObjectHideFlags: 0
