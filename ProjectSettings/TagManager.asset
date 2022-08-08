@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Fire
+  - Crate
+  - AK-47
+  - Pistol
   layers:
   - Default
   - TransparentFX
