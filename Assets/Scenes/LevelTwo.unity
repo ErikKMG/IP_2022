@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 1142067155}
   m_Layer: 0
   m_Name: RightSIdeWall
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 1260813755}
   m_Layer: 0
   m_Name: Top Wall
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 1459743792}
   m_Layer: 0
   m_Name: Slop
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 1602961834}
   m_Layer: 0
   m_Name: Enviroument
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 2050941276}
   m_Layer: 0
   m_Name: LeftSideWall
-  m_TagString: Ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

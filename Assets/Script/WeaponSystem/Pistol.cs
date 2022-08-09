@@ -17,6 +17,11 @@ public class Pistol : MonoBehaviour
     // Projectile Velocity
     public float launchVelocity;
 
+    // Pistol Flash
+    public GameObject FlashOne;
+    public GameObject FlashTwo;
+    public GameObject FlashThree;
+
     bool reloading = false;
     [SerializeField] bool isShooting = false;
     [SerializeField] bool isEmpty = false;
@@ -99,14 +104,21 @@ public class Pistol : MonoBehaviour
 
         isShooting = true;
 
+        FlashOne.SetActive(true);
+        FlashTwo.SetActive(true);
+        FlashThree.SetActive(true);
+
         --PistolAmmo;
         ++AmmoFired;
         Debug.Log("Ammo Fired: " + AmmoFired);
         PistolAmmoCount.text = PistolAmmo.ToString();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.05f);
         isShooting = false;
-     
+
+        FlashOne.SetActive(false);
+        FlashTwo.SetActive(false);
+        FlashThree.SetActive(false);
     }
 
     IEnumerator AmmoReload()
@@ -164,7 +176,6 @@ public class Pistol : MonoBehaviour
     {
         if (PistolAmmo > 0)
         {
-            //fire = true;
             StartCoroutine(AmmoDeduct());
             Debug.Log("Shooting");
 

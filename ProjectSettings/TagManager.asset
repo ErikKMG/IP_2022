@@ -9,6 +9,7 @@ TagManager:
   - Crate
   - AK-47
   - Pistol
+  - Platform
   layers:
   - Default
   - TransparentFX
