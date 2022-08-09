@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     bool two = false;
     bool three = false;
 
+    // Bool the check if weapon pickup
+    [SerializeField] bool isPistol = false;
+    [SerializeField] bool isAk = false;
+    [SerializeField] bool isRifle = false;
+
     // Raycast Interaction Distance
     public float interactionDistance;
 
@@ -94,6 +99,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (interact)
                 {
+                    isPistol = true;
+
                     Debug.Log("Pistol Taken");
                     hitInfo.transform.gameObject.SetActive(false);
                     PistolTaken.SetActive(true);
@@ -117,6 +124,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (interact)
                 {
+                    isAk = true;
+
                     Debug.Log("AK-47 Taken");
                     hitInfo.transform.gameObject.SetActive(false);
                     AK47Taken.SetActive(true);
@@ -141,6 +150,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (interact)
                 {
+                    isRifle = true;
+
                     Debug.Log("M4 Taken");
                     hitInfo.transform.gameObject.SetActive(false);
                     RifleTaken.gameObject.SetActive(true);
@@ -234,7 +245,7 @@ public class PlayerController : MonoBehaviour
         one = true;
         //GameObject pistolUntaken = GameObject.Find("Pistol");
 
-        if (RifleTaken.activeInHierarchy == true || AK47Taken.activeInHierarchy == true)
+        if (isPistol == true && RifleTaken.activeInHierarchy == true || AK47Taken.activeInHierarchy == true)
         {
             if (one)
             {
@@ -256,7 +267,7 @@ public class PlayerController : MonoBehaviour
                 M4Slice.gameObject.SetActive(false);
             }
         }
-        else if (RifleTaken.activeInHierarchy == false || AK47Taken.activeInHierarchy == false)
+        else if (isRifle == false || isPistol == false || isAk == false)
         {
             if (one)
             {
@@ -279,7 +290,7 @@ public class PlayerController : MonoBehaviour
         two = true;
         //GameObject AKUntaken = GameObject.Find("AK-47");
 
-        if (PistolTaken.activeInHierarchy == true || RifleTaken.activeInHierarchy == true)
+        if (isAk == true && PistolTaken.activeInHierarchy == true || RifleTaken.activeInHierarchy == true)
         {
             if(two)
             {
@@ -301,7 +312,7 @@ public class PlayerController : MonoBehaviour
                 M4Slice.gameObject.SetActive(false);
             }
         }
-        else if (PistolTaken.activeInHierarchy == false || RifleTaken.activeInHierarchy == false)
+        else if (isRifle == false || isPistol == false || isAk == false)
         {
             if (two)
             {
@@ -324,7 +335,7 @@ public class PlayerController : MonoBehaviour
         three = true;
         //GameObject RifleUntaken = GameObject.Find("M4");
 
-        if (AK47Taken.activeInHierarchy == true || PistolTaken.activeInHierarchy == true)
+        if (isRifle == true && AK47Taken.activeInHierarchy == true || PistolTaken.activeInHierarchy == true)
         {
             if (three)
             {
@@ -346,7 +357,7 @@ public class PlayerController : MonoBehaviour
                 AKSlice.gameObject.SetActive(false);
             }
         }
-        else if (AK47Taken.activeInHierarchy == false || PistolTaken.activeInHierarchy == false)
+        else if (isRifle == false || isPistol == false || isAk == false)
         {
             if (three)
             {
