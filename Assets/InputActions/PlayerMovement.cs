@@ -73,18 +73,27 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PreviousWeapon"",
+                    ""name"": ""Pistol"",
                     ""type"": ""Button"",
-                    ""id"": ""d92367d1-a2ad-4e88-b437-92e9b1c7527d"",
+                    ""id"": ""3b01d2bf-90bb-4829-8dc3-fcebecdb9eca"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextWeapon"",
+                    ""name"": ""AK-47"",
                     ""type"": ""Button"",
-                    ""id"": ""b2eb790e-b47d-469d-8806-9e1814fc752d"",
+                    ""id"": ""3ad3d83b-317b-416c-b221-8ac8ea2c4b57"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""M4"",
+                    ""type"": ""Button"",
+                    ""id"": ""af4377bc-633d-49b0-8a95-f8363662b957"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -347,23 +356,34 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3de25476-87b8-4573-a634-052e3cc17331"",
+                    ""id"": ""b33a1d6a-7ef4-4bae-97f1-26fa4d02440c"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""PreviousWeapon"",
+                    ""action"": ""Pistol"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ca7f304f-d87c-4f4e-a2b8-a1971571d013"",
+                    ""id"": ""866a201d-57a2-47fd-81f5-111f3e422e30"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NextWeapon"",
+                    ""action"": ""AK-47"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fee4208-e977-4db5-8ebb-5bf12f16ddbd"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""M4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -956,8 +976,9 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Take = m_Player.FindAction("Take", throwIfNotFound: true);
-        m_Player_PreviousWeapon = m_Player.FindAction("PreviousWeapon", throwIfNotFound: true);
-        m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
+        m_Player_Pistol = m_Player.FindAction("Pistol", throwIfNotFound: true);
+        m_Player_AK47 = m_Player.FindAction("AK-47", throwIfNotFound: true);
+        m_Player_M4 = m_Player.FindAction("M4", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1034,8 +1055,9 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Take;
-    private readonly InputAction m_Player_PreviousWeapon;
-    private readonly InputAction m_Player_NextWeapon;
+    private readonly InputAction m_Player_Pistol;
+    private readonly InputAction m_Player_AK47;
+    private readonly InputAction m_Player_M4;
     public struct PlayerActions
     {
         private @PlayerMovement m_Wrapper;
@@ -1045,8 +1067,9 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Take => m_Wrapper.m_Player_Take;
-        public InputAction @PreviousWeapon => m_Wrapper.m_Player_PreviousWeapon;
-        public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
+        public InputAction @Pistol => m_Wrapper.m_Player_Pistol;
+        public InputAction @AK47 => m_Wrapper.m_Player_AK47;
+        public InputAction @M4 => m_Wrapper.m_Player_M4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1071,12 +1094,15 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 @Take.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTake;
                 @Take.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTake;
                 @Take.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTake;
-                @PreviousWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
-                @PreviousWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
-                @PreviousWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
-                @NextWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
-                @NextWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
-                @NextWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
+                @Pistol.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistol;
+                @Pistol.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistol;
+                @Pistol.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistol;
+                @AK47.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAK47;
+                @AK47.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAK47;
+                @AK47.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAK47;
+                @M4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnM4;
+                @M4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnM4;
+                @M4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnM4;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1096,12 +1122,15 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
                 @Take.started += instance.OnTake;
                 @Take.performed += instance.OnTake;
                 @Take.canceled += instance.OnTake;
-                @PreviousWeapon.started += instance.OnPreviousWeapon;
-                @PreviousWeapon.performed += instance.OnPreviousWeapon;
-                @PreviousWeapon.canceled += instance.OnPreviousWeapon;
-                @NextWeapon.started += instance.OnNextWeapon;
-                @NextWeapon.performed += instance.OnNextWeapon;
-                @NextWeapon.canceled += instance.OnNextWeapon;
+                @Pistol.started += instance.OnPistol;
+                @Pistol.performed += instance.OnPistol;
+                @Pistol.canceled += instance.OnPistol;
+                @AK47.started += instance.OnAK47;
+                @AK47.performed += instance.OnAK47;
+                @AK47.canceled += instance.OnAK47;
+                @M4.started += instance.OnM4;
+                @M4.performed += instance.OnM4;
+                @M4.canceled += instance.OnM4;
             }
         }
     }
@@ -1263,8 +1292,9 @@ public partial class @PlayerMovement : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
-        void OnPreviousWeapon(InputAction.CallbackContext context);
-        void OnNextWeapon(InputAction.CallbackContext context);
+        void OnPistol(InputAction.CallbackContext context);
+        void OnAK47(InputAction.CallbackContext context);
+        void OnM4(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

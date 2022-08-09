@@ -10,6 +10,7 @@ TagManager:
   - AK-47
   - Pistol
   - Platform
+  - M4
   layers:
   - Default
   - TransparentFX

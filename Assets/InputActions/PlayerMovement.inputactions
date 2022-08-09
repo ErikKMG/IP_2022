@@ -51,18 +51,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PreviousWeapon",
+                    "name": "Pistol",
                     "type": "Button",
-                    "id": "d92367d1-a2ad-4e88-b437-92e9b1c7527d",
+                    "id": "3b01d2bf-90bb-4829-8dc3-fcebecdb9eca",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NextWeapon",
+                    "name": "AK-47",
                     "type": "Button",
-                    "id": "b2eb790e-b47d-469d-8806-9e1814fc752d",
+                    "id": "3ad3d83b-317b-416c-b221-8ac8ea2c4b57",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "M4",
+                    "type": "Button",
+                    "id": "af4377bc-633d-49b0-8a95-f8363662b957",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -325,23 +334,34 @@
                 },
                 {
                     "name": "",
-                    "id": "3de25476-87b8-4573-a634-052e3cc17331",
+                    "id": "b33a1d6a-7ef4-4bae-97f1-26fa4d02440c",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "PreviousWeapon",
+                    "action": "Pistol",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ca7f304f-d87c-4f4e-a2b8-a1971571d013",
+                    "id": "866a201d-57a2-47fd-81f5-111f3e422e30",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NextWeapon",
+                    "action": "AK-47",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fee4208-e977-4db5-8ebb-5bf12f16ddbd",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "M4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

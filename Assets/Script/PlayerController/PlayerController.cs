@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
     private bool canJump;
 
     bool interact = false;
-    bool up = false;
-    bool down = false;
+    bool one = false;
+    bool two = false;
+    bool three = false;
 
     // Raycast Interaction Distance
     public float interactionDistance;
@@ -29,10 +30,12 @@ public class PlayerController : MonoBehaviour
     //Weapon Inventory
     public GameObject PistolTaken;
     public GameObject AK47Taken;
+    public GameObject M4Taken;
 
     //Weapon Inventory UI
     public TextMeshProUGUI PistolUI;
     public TextMeshProUGUI AK47UI;
+    public TextMeshProUGUI M4UI;
 
     //Pistol HUD
     public TextMeshProUGUI PistolBulletCount;
@@ -43,6 +46,11 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI AKBulletCount;
     public TextMeshProUGUI AKTotalAmmo;
     public TextMeshProUGUI AKSlice;
+
+    // M4 HUD
+    public TextMeshProUGUI M4BulletCount;
+    public TextMeshProUGUI M4TotalAmmo;
+    public TextMeshProUGUI M4Slice;
 
     private void Update()
     {
@@ -97,6 +105,11 @@ public class PlayerController : MonoBehaviour
                     AKBulletCount.gameObject.SetActive(false);
                     AKTotalAmmo.gameObject.SetActive(false);
                     AKSlice.gameObject.SetActive(false);
+
+                    M4Taken.gameObject.SetActive(false);
+                    M4BulletCount.gameObject.SetActive(false);
+                    M4TotalAmmo.gameObject.SetActive(false);
+                    M4Slice.gameObject.SetActive(false);
                 }
             }
             if (hitInfo.transform.tag == "AK-47")
@@ -110,6 +123,35 @@ public class PlayerController : MonoBehaviour
                     AKBulletCount.gameObject.SetActive(true);
                     AKTotalAmmo.gameObject.SetActive(true);
                     AKSlice.gameObject.SetActive(true);
+
+                    PistolTaken.gameObject.SetActive(false);
+                    PistolBulletCount.gameObject.SetActive(false);
+                    PistolTotalAmmo.gameObject.SetActive(false);
+                    PistolSlice.gameObject.SetActive(false);
+
+                    M4Taken.gameObject.SetActive(false);
+                    M4BulletCount.gameObject.SetActive(false);
+                    M4TotalAmmo.gameObject.SetActive(false);
+                    M4Slice.gameObject.SetActive(false);
+                }
+            }
+
+            if (hitInfo.transform.tag == "M4")
+            {
+                if (interact)
+                {
+                    Debug.Log("M4 Taken");
+                    hitInfo.transform.gameObject.SetActive(false);
+                    M4Taken.SetActive(true);
+                    M4UI.gameObject.SetActive(true);
+                    M4BulletCount.gameObject.SetActive(true);
+                    M4TotalAmmo.gameObject.SetActive(true);
+                    M4Slice.gameObject.SetActive(true);
+
+                    AK47Taken.gameObject.SetActive(false);
+                    AKBulletCount.gameObject.SetActive(false);
+                    AKTotalAmmo.gameObject.SetActive(false);
+                    AKSlice.gameObject.SetActive(false);
 
                     PistolTaken.gameObject.SetActive(false);
                     PistolBulletCount.gameObject.SetActive(false);
@@ -129,6 +171,10 @@ public class PlayerController : MonoBehaviour
                     else if (PistolTaken.activeInHierarchy == true)
                     {
                         hitInfo.transform.GetComponent<PistolCrate>().Refill(pistol);
+                    }
+                    else if (M4Taken.activeInHierarchy == true)
+                    {
+                        //hitInfo.transform.GetComponent<M4Crate>().Refill(m4);
                     }
                 }
             }
@@ -181,35 +227,85 @@ public class PlayerController : MonoBehaviour
         interact = true;
     }
 
-    void OnPreviousWeapon(InputValue PWValue)
-    {
-        up = true;
-        // Show Pistol
-        PistolTaken.SetActive(true);
-        PistolBulletCount.gameObject.SetActive(true);
-        PistolTotalAmmo.gameObject.SetActive(true);
-        PistolSlice.gameObject.SetActive(true);
 
-        // Hide AK
-        AK47Taken.SetActive(false);
-        AKBulletCount.gameObject.SetActive(false);
-        AKTotalAmmo.gameObject.SetActive(false);
-        AKSlice.gameObject.SetActive(false);
+    void OnPistol(InputValue PistolValue)
+    {
+        one = true;
+        if (PistolTaken.activeInHierarchy == true)
+        {
+            if (one)
+            {
+                // Show Pistol
+                PistolTaken.SetActive(true);
+                PistolBulletCount.gameObject.SetActive(true);
+                PistolTotalAmmo.gameObject.SetActive(true);
+                PistolSlice.gameObject.SetActive(true);
+
+                // Hide Weapon
+                AK47Taken.SetActive(false);
+                AKBulletCount.gameObject.SetActive(false);
+                AKTotalAmmo.gameObject.SetActive(false);
+                AKSlice.gameObject.SetActive(false);
+
+                M4Taken.SetActive(false);
+                M4BulletCount.gameObject.SetActive(false);
+                M4TotalAmmo.gameObject.SetActive(false);
+                M4Slice.gameObject.SetActive(false);
+            }
+        }
     }
 
-    void OnNextWeapon(InputValue NWValue)
+    void OnAK47(InputValue AKValue)
     {
-        down = true;
-        // Show AK
-        AK47Taken.SetActive(true);
-        AKBulletCount.gameObject.SetActive(true);
-        AKTotalAmmo.gameObject.SetActive(true);
-        AKSlice.gameObject.SetActive(true);
+        two = true;
+        if (AK47Taken.activeInHierarchy == true)
+        {
+            if(two)
+            {
+                // Show AK
+                AK47Taken.SetActive(true);
+                AKBulletCount.gameObject.SetActive(true);
+                AKTotalAmmo.gameObject.SetActive(true);
+                AKSlice.gameObject.SetActive(true);
 
-        // Hide Pistol
-        PistolTaken.SetActive(false);
-        PistolBulletCount.gameObject.SetActive(false);
-        PistolTotalAmmo.gameObject.SetActive(false);
-        PistolSlice.gameObject.SetActive(false);
+                // Hide Weapon
+                PistolTaken.SetActive(false);
+                PistolBulletCount.gameObject.SetActive(false);
+                PistolTotalAmmo.gameObject.SetActive(false);
+                PistolSlice.gameObject.SetActive(false);
+
+                M4Taken.SetActive(false);
+                M4BulletCount.gameObject.SetActive(false);
+                M4TotalAmmo.gameObject.SetActive(false);
+                M4Slice.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void OnM4(InputValue M4Value)
+    {
+        three = true;
+        if(M4Taken.activeInHierarchy == true)
+        {
+            if (three)
+            {
+                // Show M4
+                M4Taken.SetActive(true);
+                M4BulletCount.gameObject.SetActive(true);
+                M4TotalAmmo.gameObject.SetActive(true);
+                M4Slice.gameObject.SetActive(true);
+
+                // Hide Weapon
+                PistolTaken.SetActive(false);
+                PistolBulletCount.gameObject.SetActive(false);
+                PistolTotalAmmo.gameObject.SetActive(false);
+                PistolSlice.gameObject.SetActive(false);
+
+                AK47Taken.SetActive(false);
+                AKBulletCount.gameObject.SetActive(false);
+                AKTotalAmmo.gameObject.SetActive(false);
+                AKSlice.gameObject.SetActive(false);
+            }
+        }
     }
 }
