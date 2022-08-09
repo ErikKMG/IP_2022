@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private PlayerLook playerlook;
     private Pistol pistol;
     private AK ak;
+    private Rifle rifle;
 
     //Weapon Inventory
     public GameObject PistolTaken;
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else if (M4Taken.activeInHierarchy == true)
                     {
-                        //hitInfo.transform.GetComponent<M4Crate>().Refill(m4);
+                        hitInfo.transform.GetComponent<RifleCrate>().Refill(rifle);
                     }
                 }
             }
