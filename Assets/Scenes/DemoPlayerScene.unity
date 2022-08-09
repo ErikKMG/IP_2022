@@ -1206,7 +1206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072341912087213407, guid: 93981bc45b1a57c4987e8456ed200913, type: 3}
       propertyPath: NextSceneIndex
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7072341912506171533, guid: 93981bc45b1a57c4987e8456ed200913, type: 3}
       propertyPath: m_IsActive
