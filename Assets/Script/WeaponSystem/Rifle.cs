@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class M4 : MonoBehaviour
+public class Rifle : MonoBehaviour
 {
     public float RayDistance;
 
@@ -25,56 +25,56 @@ public class M4 : MonoBehaviour
 
     public Color OReloaded;
 
-    public TextMeshProUGUI M4AmmoCount;
-    public int M4Ammo;
+    public TextMeshProUGUI RifleAmmoCount;
+    public int RifleAmmo;
     float HalfAmmo;
     float FullAmmo;
 
-    public TextMeshProUGUI M4TotalAmmo;
-    public int M4totalAmmo;
+    public TextMeshProUGUI RifleTotalAmmo;
+    public int RifletotalAmmo;
 
     // For Crate.cs to check if total ammo is full
-    public int M4FulltotalAmmo;
+    public int RifleFulltotalAmmo;
 
     [SerializeField] int AmmoFired;
 
     private void Start()
     {
-        M4AmmoCount.text = M4Ammo.ToString();
-        M4TotalAmmo.text = M4totalAmmo.ToString();
+        RifleAmmoCount.text = RifleAmmo.ToString();
+        RifleTotalAmmo.text = RifletotalAmmo.ToString();
 
         // Ammo Calculation
-        HalfAmmo = M4Ammo / 2;
-        FullAmmo = M4Ammo;
+        HalfAmmo = RifleAmmo / 2;
+        FullAmmo = RifleAmmo;
 
         // TotalAmmo Check
-        M4FulltotalAmmo = M4totalAmmo;
+        RifleFulltotalAmmo = RifletotalAmmo;
     }
 
     IEnumerator AmmoDeduct()
     {
-        if (M4Ammo == 0)
+        if (RifleAmmo == 0)
         {
             isEmpty = true;
             isShooting = false;
 
-            M4Ammo = 0;
-            M4AmmoCount.text = M4Ammo.ToString();
+            RifleAmmo = 0;
+            RifleAmmoCount.text = RifleAmmo.ToString();
         }
-        else if (M4Ammo <= HalfAmmo)
+        else if (RifleAmmo <= HalfAmmo)
         {
             isEmpty = false;
 
-            M4AmmoCount.color = Color.red;
-            M4AmmoCount.text = M4Ammo.ToString();
+            RifleAmmoCount.color = Color.red;
+            RifleAmmoCount.text = RifleAmmo.ToString();
         }
 
         isShooting = true;
 
-        --M4Ammo;
+        --RifleAmmo;
         ++AmmoFired;
         Debug.Log("Ammo Fired: " + AmmoFired);
-        M4AmmoCount.text = M4Ammo.ToString();
+        RifleAmmoCount.text = RifleAmmo.ToString();
 
         yield return new WaitForSeconds(1f);
         isShooting = false;
@@ -83,7 +83,7 @@ public class M4 : MonoBehaviour
 
     IEnumerator AmmoReload()
     {
-        if (M4Ammo == FullAmmo)
+        if (RifleAmmo == FullAmmo)
         {
             isReloaded = true;
             reloading = false;
@@ -93,29 +93,29 @@ public class M4 : MonoBehaviour
             yield return new WaitForSeconds(1f);
             isReloaded = false;
         }
-        else if (reloading && M4Ammo > 0)
+        else if (reloading && RifleAmmo > 0)
         {
             reloading = false;
         }
-        else if (reloading && M4totalAmmo == 0)
+        else if (reloading && RifletotalAmmo == 0)
         {
             reloading = false;
         }
-        else if (reloading && M4Ammo < FullAmmo)
+        else if (reloading && RifleAmmo < FullAmmo)
         {
             isReloading = true;
             isEmpty = false;
 
-            M4Ammo = M4Ammo + AmmoFired;
-            M4AmmoCount.text = M4Ammo.ToString();
+            RifleAmmo = RifleAmmo + AmmoFired;
+            RifleAmmoCount.text = RifleAmmo.ToString();
 
-            M4AmmoCount.color = OReloaded;
-            M4AmmoCount.text = M4Ammo.ToString();
+            RifleAmmoCount.color = OReloaded;
+            RifleAmmoCount.text = RifleAmmo.ToString();
 
             //Debug.Log("Ammo Remainding: " + AmmoRemainding);
 
-            M4totalAmmo = M4totalAmmo - AmmoFired;
-            M4TotalAmmo.text = M4totalAmmo.ToString();
+            RifletotalAmmo = RifletotalAmmo - AmmoFired;
+            RifleTotalAmmo.text = RifletotalAmmo.ToString();
             AmmoFired = 0;
 
             yield return new WaitForSeconds(3f);
@@ -134,7 +134,7 @@ public class M4 : MonoBehaviour
 
     void OnShoot(InputValue shootValue)
     {
-        if (M4Ammo > 0)
+        if (RifleAmmo > 0)
         {
             //fire = true;
             StartCoroutine(AmmoDeduct());
