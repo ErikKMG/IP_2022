@@ -17,6 +17,11 @@ public class Rifle : MonoBehaviour
     // Projectile Velocity
     public float launchVelocity;
 
+    // Rifle Flash
+    public GameObject FlashOne;
+    public GameObject FlashTwo;
+    public GameObject FlashThree;
+
     bool reloading = false;
     [SerializeField] bool isShooting = false;
     [SerializeField] bool isEmpty = false;
@@ -71,14 +76,21 @@ public class Rifle : MonoBehaviour
 
         isShooting = true;
 
+        FlashOne.SetActive(true);
+        FlashTwo.SetActive(true);
+        FlashThree.SetActive(true);
+
         --RifleAmmo;
         ++AmmoFired;
         Debug.Log("Ammo Fired: " + AmmoFired);
         RifleAmmoCount.text = RifleAmmo.ToString();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.05f);
         isShooting = false;
 
+        FlashOne.SetActive(false);
+        FlashTwo.SetActive(false);
+        FlashThree.SetActive(false);
     }
 
     IEnumerator AmmoReload()

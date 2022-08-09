@@ -1105,15 +1105,18 @@ MonoBehaviour:
   Muzzle: {fileID: 1912821868108188703}
   Bullet: {fileID: 4991706320395535007, guid: e8e6f33fa2ce69748b3eb155c622c660, type: 3}
   launchVelocity: 7000
+  FlashOne: {fileID: 3663382470605576722}
+  FlashTwo: {fileID: 2325906276251834884}
+  FlashThree: {fileID: 4549549917919042857}
   isShooting: 0
   isEmpty: 0
   isReloaded: 0
   isReloading: 0
   OReloaded: {r: 1, g: 0.5568628, b: 0, a: 1}
   RifleAmmoCount: {fileID: 2735933971637950820}
-  RifleAmmo: 31
+  RifleAmmo: 30
   RifleTotalAmmo: {fileID: 2038479678805528579}
-  RifletotalAmmo: 100
+  RifletotalAmmo: 60
   RifleFulltotalAmmo: 0
   AmmoFired: 0
 --- !u!1 &2220093182051253810
@@ -1276,8 +1279,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2325906276251834884}
   m_LocalRotation: {x: -0.49999997, y: 0.50000006, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 0.0015144931, y: 0.012500606, z: 0.0006827032}
-  m_LocalScale: {x: 0.0018205056, y: 0.0018205057, z: 0.001820506}
+  m_LocalPosition: {x: 0.00008, y: 0.02031, z: 0.00118}
+  m_LocalScale: {x: 0.0013699487, y: 0.0013699487, z: 0.001369949}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4123604072012931542}
@@ -2715,8 +2718,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3663382470605576722}
   m_LocalRotation: {x: -0.49999988, y: 0.5000001, z: 0.5000001, w: -0.4999999}
-  m_LocalPosition: {x: 0.0015144931, y: 0.010669164, z: 0.00039929152}
-  m_LocalScale: {x: 0.0010272601, y: 0.0010272602, z: 0.0010272603}
+  m_LocalPosition: {x: 0.00008, y: 0.01848, z: 0.0009}
+  m_LocalScale: {x: 0.0007730235, y: 0.0007730236, z: 0.0007730237}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4123604072012931542}
@@ -2799,8 +2802,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4549549917919042857}
   m_LocalRotation: {x: -0.49999997, y: 0.50000006, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 0.0018089848, y: 0.012545829, z: -0.0003994131}
-  m_LocalScale: {x: 0.0023549062, y: 0.0023549066, z: 0.0023549069}
+  m_LocalPosition: {x: 0.00037, y: 0.02036, z: 0.0001}
+  m_LocalScale: {x: 0.0017720904, y: 0.0017720908, z: 0.001772091}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4123604072012931542}
