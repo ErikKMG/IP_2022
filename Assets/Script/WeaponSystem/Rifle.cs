@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Audio;
 
 public class Rifle : MonoBehaviour
 {
@@ -43,6 +44,12 @@ public class Rifle : MonoBehaviour
 
     [SerializeField] int AmmoFired;
 
+    // Audio
+    public AudioClip bang;
+    public AudioClip reload;
+    public AudioClip shell;
+    public AudioSource audioSource;
+
     private void Start()
     {
         RifleAmmoCount.text = RifleAmmo.ToString();
@@ -54,6 +61,9 @@ public class Rifle : MonoBehaviour
 
         // TotalAmmo Check
         RifleFulltotalAmmo = RifletotalAmmo;
+
+        // Get Audio Component
+        audioSource = GetComponent<AudioSource>();
     }
 
     IEnumerator AmmoDeduct()
@@ -130,6 +140,7 @@ public class Rifle : MonoBehaviour
             RifleTotalAmmo.text = RifletotalAmmo.ToString();
             AmmoFired = 0;
 
+            audioSource.PlayOneShot(reload);
             yield return new WaitForSeconds(3f);
             //AmmoRemainding = 0;
             isReloading = false;
@@ -148,8 +159,10 @@ public class Rifle : MonoBehaviour
     {
         if (RifleAmmo > 0)
         {
+            audioSource.PlayOneShot(bang);
             //fire = true;
             StartCoroutine(AmmoDeduct());
+            audioSource.PlayOneShot(shell);
             Debug.Log("Shooting");
 
             GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
