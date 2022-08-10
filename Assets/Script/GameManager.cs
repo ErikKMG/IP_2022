@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             if (activePlayer == null)
             {
                 //If there is no player, I should spawn one
-                GameObject newPlayer = Instantiate(playerPrefab, new Vector3(0,2,0), Quaternion.identity);
+                GameObject newPlayer = Instantiate(playerPrefab, new Vector3(0,20,0), Quaternion.identity);
                 // Store the new Player
                 activePlayer = newPlayer.GetComponent<PlayerController>();
                 DontDestroyOnLoad(newPlayer);
