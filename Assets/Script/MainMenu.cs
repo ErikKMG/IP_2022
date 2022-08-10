@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     // New Game Scene Index
     public int NewGameSceneIndex;
 
-    void NewGame()
+    public void NewGame()
     {
         SceneManager.LoadScene(NewGameSceneIndex);
     }
