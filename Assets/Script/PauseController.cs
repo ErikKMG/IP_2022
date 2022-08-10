@@ -47,10 +47,10 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         pause = true;
         menu.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
         AudioListener.pause = true;
     }
 
@@ -59,7 +59,6 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1;
         pause = false;
         menu.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
         AudioListener.pause = false;
     }
 
