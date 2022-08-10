@@ -14,6 +14,7 @@ public class PauseController : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
         actions = new PauseInputs();
     }
 
