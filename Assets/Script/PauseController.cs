@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PauseController : MonoBehaviour
 {
@@ -49,8 +50,8 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 0;
         pause = true;
         menu.SetActive(true);
-        Cursor.visible = true;
-
+        Cursor.lockState = CursorLockMode.None;
+        AudioListener.pause = true;
     }
 
     public void Resume()
@@ -58,7 +59,8 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1;
         pause = false;
         menu.SetActive(false);
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AudioListener.pause = false;
     }
 
     public void ReturnToMenu()
