@@ -14,7 +14,6 @@ public class PauseController : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.None;
         actions = new PauseInputs();
     }
 
@@ -48,7 +47,6 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
-        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         pause = true;
         menu.SetActive(true);
