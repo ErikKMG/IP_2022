@@ -615,4 +615,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingWaitTime: 3.5
-  SceneIndex: 0
+  SceneIndex: 3
