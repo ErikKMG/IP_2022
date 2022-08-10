@@ -28372,6 +28372,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie Running (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Size.y
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Center.y
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Center.z
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 2152760069360902919, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -28910,6 +28926,26 @@ PrefabInstance:
     - target: {fileID: 2152760069360902916, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
       propertyPath: m_Name
       value: Zombie Running
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Size.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Size.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Center.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Center.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152760069360902917, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
+      propertyPath: m_Center.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2152760069360902919, guid: abbf038bf75be7d49b8b229f8bbf0f38, type: 3}
       propertyPath: m_RootOrder
