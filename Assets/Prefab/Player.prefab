@@ -3163,7 +3163,7 @@ MonoBehaviour:
   nextState: 
   HealthDigit: {fileID: 3819734087478172830}
   HealthTime: 2
-  HurtTime: 1
+  HurtTime: 0.01
   pain: 0
 --- !u!114 &4806991970257628155
 MonoBehaviour:
