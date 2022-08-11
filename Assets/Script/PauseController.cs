@@ -64,7 +64,6 @@ public class PauseController : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
-        Destroy(GameObject.Find("GameManager"));
         Destroy(GameObject.Find("Player(Clone)"));
     }
 }

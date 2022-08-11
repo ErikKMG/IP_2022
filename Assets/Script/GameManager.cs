@@ -39,11 +39,11 @@ public class GameManager : MonoBehaviour
             // IF is 0, do nothing
 
             //IF is at 0 find Spawn empty script
-            SpawnSpawn spawnSpot = FindObjectOfType<SpawnSpawn>();
+            //SpawnSpawn spawnSpot = FindObjectOfType<SpawnSpawn>();
 
             //Move and rotate the Player to the spawnSport
-            activePlayer.transform.position = spawnSpot.transform.position;
-            activePlayer.transform.rotation = spawnSpot.transform.rotation;
+            //activePlayer.transform.position = spawnSpot.transform.position;
+            //activePlayer.transform.rotation = spawnSpot.transform.rotation;
         }
         else
         {
