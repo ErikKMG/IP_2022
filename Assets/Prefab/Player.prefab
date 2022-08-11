@@ -3189,8 +3189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c414bdde12fb154fb3fd618ca48d590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  JumpHeight: 10
+  moveSpeed: 10
+  JumpHeight: 15
   isPistol: 0
   isRifle: 0
   interactionDistance: 3.5
@@ -5276,4 +5276,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 7974125377690396377}
-  HUD: {fileID: 7949800572510137711}
