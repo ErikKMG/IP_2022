@@ -64,6 +64,7 @@ public class Rifle : MonoBehaviour
 
         // Get Audio Component
         audioSource = GetComponent<AudioSource>();
+
     }
 
     IEnumerator AmmoDeduct()
@@ -160,6 +161,7 @@ public class Rifle : MonoBehaviour
         while (RifleAmmo > 0)
         {
             yield return new WaitForSeconds(0.09f);
+            
             audioSource.PlayOneShot(bang);
             //fire = true;
             StartCoroutine(AmmoDeduct());
@@ -190,22 +192,14 @@ public class Rifle : MonoBehaviour
 
     void OnAuto()
     {
-        //if (RifleAmmo > 0)
-        //{
-        //    while (RifleAmmo > 0)
-        //    {
-        //        audioSource.PlayOneShot(bang);
-        //        //fire = true;
-        //        StartCoroutine(AmmoDeduct());
-        //        audioSource.PlayOneShot(shell);
-        //        Debug.Log("Shooting");
-
-        //        GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
-        //        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
-        //        StartCoroutine(BulletClear());
-        //    }
-        //}
-        StartCoroutine(Wait());
+        if (Input.GetMouseButton(0))
+        {
+            StartCoroutine(Wait());
+        }
+        else
+        {
+            StopCoroutine(Wait());
+        }
     }
 
     void OnReload(InputValue reloadValue)
