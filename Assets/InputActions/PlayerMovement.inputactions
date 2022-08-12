@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AK-47",
-                    "type": "Button",
-                    "id": "3ad3d83b-317b-416c-b221-8ac8ea2c4b57",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "M4",
                     "type": "Button",
                     "id": "af4377bc-633d-49b0-8a95-f8363662b957",
@@ -345,19 +336,8 @@
                 },
                 {
                     "name": "",
-                    "id": "866a201d-57a2-47fd-81f5-111f3e422e30",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "AK-47",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7fee4208-e977-4db5-8ebb-5bf12f16ddbd",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

@@ -66,6 +66,11 @@ public class Rifle : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     IEnumerator AmmoDeduct()
     {
         if (RifleAmmo == 0)
@@ -155,7 +160,7 @@ public class Rifle : MonoBehaviour
         Destroy(GameObject.Find("Sphere(Clone)"));
     }
 
-    void OnShoot(InputValue shootValue)
+    void OnShoot()
     {
         if (RifleAmmo > 0)
         {

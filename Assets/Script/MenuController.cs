@@ -10,16 +10,6 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject noSavedGameDialog = null;
 
-    // Audio
-    public AudioClip BGM;
-    public AudioSource audioSource;
-
-    private void Awake()
-    {   
-        audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(BGM);
-    }
-
     public void NewGameDialogYes()
     {
         SceneManager.LoadScene(1);
