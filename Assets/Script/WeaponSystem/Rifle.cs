@@ -50,6 +50,12 @@ public class Rifle : MonoBehaviour
     public AudioClip shell;
     public AudioSource audioSource;
 
+    public float fireRate = 28f;
+    private float timeToFire = 0f;
+
+    float waitToReload = 0f;
+    float timeToDelay = 4f;
+
     private void Start()
     {
         RifleAmmoCount.text = RifleAmmo.ToString();
@@ -65,6 +71,21 @@ public class Rifle : MonoBehaviour
         // Get Audio Component
         audioSource = GetComponent<AudioSource>();
 
+    }
+
+    private void LateUpdate()
+    {
+        StartCoroutine(AutoShoot());
+
+        if(RifleAmmo < FullAmmo)
+        {
+            waitToReload = waitToReload + 1f * Time.deltaTime;
+            if (waitToReload >= timeToDelay)
+            {
+                waitToReload = 0f;
+                OnReload();
+            }
+        }
     }
 
     IEnumerator AmmoDeduct()
@@ -151,17 +172,25 @@ public class Rifle : MonoBehaviour
 
     IEnumerator BulletClear()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(2f);
         Destroy(GameObject.Find("Bullet(Clone)"));
         Destroy(GameObject.Find("Sphere(Clone)"));
     }
 
-    IEnumerator Wait()
+    IEnumerator AutoShoot()
     {
-        while (RifleAmmo > 0)
+        yield return new WaitForSeconds(1f);
+        if (Input.GetButton("Fire1") && Time.time >= timeToFire)
         {
-            yield return new WaitForSeconds(0.09f);
-            
+            timeToFire = Time.time + 1f / fireRate;
+            OnShoot();
+        }
+    }
+
+    void OnShoot()
+    {
+        if (RifleAmmo > 0)
+        {
             audioSource.PlayOneShot(bang);
             //fire = true;
             StartCoroutine(AmmoDeduct());
@@ -174,35 +203,8 @@ public class Rifle : MonoBehaviour
         }
     }
 
-    void OnShoot()
-    {
-        if (RifleAmmo > 0)
-        {
-        audioSource.PlayOneShot(bang);
-        //fire = true;
-        StartCoroutine(AmmoDeduct());
-        audioSource.PlayOneShot(shell);
-        Debug.Log("Shooting");
 
-        GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
-        StartCoroutine(BulletClear());
-        }
-    }
-
-    void OnAuto()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            StartCoroutine(Wait());
-        }
-        else
-        {
-            StopCoroutine(Wait());
-        }
-    }
-
-    void OnReload(InputValue reloadValue)
+    void OnReload()
     {
         reloading = true;
         StartCoroutine(AmmoReload());
