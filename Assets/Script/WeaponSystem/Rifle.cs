@@ -66,11 +66,6 @@ public class Rifle : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     IEnumerator AmmoDeduct()
     {
         if (RifleAmmo == 0)
@@ -160,10 +155,11 @@ public class Rifle : MonoBehaviour
         Destroy(GameObject.Find("Sphere(Clone)"));
     }
 
-    void OnShoot()
+    IEnumerator Wait()
     {
-        if (RifleAmmo > 0)
+        while (RifleAmmo > 0)
         {
+            yield return new WaitForSeconds(0.09f);
             audioSource.PlayOneShot(bang);
             //fire = true;
             StartCoroutine(AmmoDeduct());
@@ -174,6 +170,42 @@ public class Rifle : MonoBehaviour
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
             StartCoroutine(BulletClear());
         }
+    }
+
+    void OnShoot()
+    {
+        if (RifleAmmo > 0)
+        {
+        audioSource.PlayOneShot(bang);
+        //fire = true;
+        StartCoroutine(AmmoDeduct());
+        audioSource.PlayOneShot(shell);
+        Debug.Log("Shooting");
+
+        GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
+        StartCoroutine(BulletClear());
+        }
+    }
+
+    void OnAuto()
+    {
+        //if (RifleAmmo > 0)
+        //{
+        //    while (RifleAmmo > 0)
+        //    {
+        //        audioSource.PlayOneShot(bang);
+        //        //fire = true;
+        //        StartCoroutine(AmmoDeduct());
+        //        audioSource.PlayOneShot(shell);
+        //        Debug.Log("Shooting");
+
+        //        GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
+        //        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
+        //        StartCoroutine(BulletClear());
+        //    }
+        //}
+        StartCoroutine(Wait());
     }
 
     void OnReload(InputValue reloadValue)

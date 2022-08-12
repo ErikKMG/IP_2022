@@ -60,7 +60,7 @@
                     "name": "",
                     "id": "f75a4eea-1fd8-4499-bb06-75ff4caedb22",
                     "path": "<Mouse>/press",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Auto",

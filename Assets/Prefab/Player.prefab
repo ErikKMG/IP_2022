@@ -1618,7 +1618,6 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 3c5c1d4d7b9307c458890a4beb12e4ae, type: 3}
   shell: {fileID: 8300000, guid: 51fcf928d40b7f943ba156c18dfe3280, type: 3}
   audioSource: {fileID: 2180352445533059403}
-  Projectile: {fileID: 4991706320395535001, guid: e8e6f33fa2ce69748b3eb155c622c660, type: 3}
 --- !u!82 &2180352445533059403
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3162,7 +3161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RayDistance: 5
   Muzzle: {fileID: 7949800572877766466}
-  Bullet: {fileID: 8822552931849732672, guid: 835c86b3ecd990741b2ff4e4619dc98e, type: 3}
+  Bullet: {fileID: 4991706320395535007, guid: e8e6f33fa2ce69748b3eb155c622c660, type: 3}
   launchVelocity: 6000
   FlashOne: {fileID: 5749908969138041162}
   FlashTwo: {fileID: 6408685622689146998}
