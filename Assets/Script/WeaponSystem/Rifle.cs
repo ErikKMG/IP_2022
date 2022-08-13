@@ -85,7 +85,7 @@ public class Rifle : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player Release Mouse");
+            //Debug.Log("Player Release Mouse");
         }
 
         // Auto Reload Function
@@ -126,7 +126,7 @@ public class Rifle : MonoBehaviour
 
         --RifleAmmo;
         ++AmmoFired;
-        Debug.Log("Ammo Fired: " + AmmoFired);
+        //Debug.Log("Ammo Fired: " + AmmoFired);
         RifleAmmoCount.text = RifleAmmo.ToString();
 
         yield return new WaitForSeconds(0.05f);
@@ -197,7 +197,7 @@ public class Rifle : MonoBehaviour
             //fire = true;
             StartCoroutine(AmmoDeduct());
             audioSource.PlayOneShot(shell);
-            Debug.Log("Shooting");
+            //Debug.Log("Shooting");
 
             GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
@@ -210,7 +210,7 @@ public class Rifle : MonoBehaviour
     {
         reloading = true;
         StartCoroutine(AmmoReload());
-        Debug.Log("Reloading");
+        //Debug.Log("Reloading");
     }
 
     void OnAuto()
