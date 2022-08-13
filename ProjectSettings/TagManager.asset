@@ -12,6 +12,7 @@ TagManager:
   - Platform
   - M4
   - Target
+  - Bullet
   layers:
   - Default
   - TransparentFX

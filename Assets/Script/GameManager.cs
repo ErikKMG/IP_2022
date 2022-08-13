@@ -6,10 +6,18 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    // Player Prefab
     public GameObject playerPrefab;
 
-    private PlayerController activePlayer;
+    // Zombie Prefab
+    //public GameObject runningZombie;
+    //public GameObject crawingZombie;
+    //public GameObject walkingZombie;
 
+    // Player Controller Script
+    private PlayerController activePlayer;
+    
+    // GameManager Self
     public static GameManager instance;
 
     public AudioSource audioSource;
@@ -73,6 +81,9 @@ public class GameManager : MonoBehaviour
                 // Store the new Player
                 activePlayer = newPlayer.GetComponent<PlayerController>();
                 DontDestroyOnLoad(newPlayer);
+                //DontDestroyOnLoad(crawingZombie);
+                //DontDestroyOnLoad(runningZombie);
+                //DontDestroyOnLoad(walkingZombie);
             }
             else
             {
