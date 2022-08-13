@@ -43,6 +43,12 @@ public class Pistol : MonoBehaviour
 
     [SerializeField] int AmmoFired;
 
+    // Audio
+    public AudioClip bang;
+    public AudioClip reload;
+    public AudioClip shell;
+    public AudioSource audioSource;
+
     private void Start()
     {
         PistolAmmoCount.text = PistolAmmo.ToString();
@@ -54,6 +60,9 @@ public class Pistol : MonoBehaviour
 
         // TotalAmmo Check
         PistolFulltotalAmmo = PistoltotalAmmo;
+
+        //Get Audio Component
+        audioSource = GetComponent<AudioSource>();
     }
 
     //private void Update()
@@ -158,6 +167,7 @@ public class Pistol : MonoBehaviour
             PistolTotalAmmo.text = PistoltotalAmmo.ToString();
             AmmoFired = 0;
 
+            audioSource.PlayOneShot(reload);
             yield return new WaitForSeconds(3f);
             //AmmoRemainding = 0;
             isReloading = false;
@@ -176,7 +186,9 @@ public class Pistol : MonoBehaviour
     {
         if (PistolAmmo > 0)
         {
+            audioSource.PlayOneShot(bang);
             StartCoroutine(AmmoDeduct());
+            audioSource.PlayOneShot(shell);
             Debug.Log("Shooting");
 
             GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);

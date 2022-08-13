@@ -28,6 +28,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] bool isEmpty = false;
     [SerializeField] bool isReloaded = false;
     [SerializeField] bool isReloading = false;
+    [SerializeField] bool autoBool;
 
     public Color OReloaded;
 
@@ -50,6 +51,13 @@ public class Rifle : MonoBehaviour
     public AudioClip shell;
     public AudioSource audioSource;
 
+    // Weapon Specs
+    public float fireRate = 28f;
+    private float timeToFire = 0f;
+
+    float waitToReload = 0f;
+    float timeToDelay = 4f;
+
     private void Start()
     {
         RifleAmmoCount.text = RifleAmmo.ToString();
@@ -64,6 +72,32 @@ public class Rifle : MonoBehaviour
 
         // Get Audio Component
         audioSource = GetComponent<AudioSource>();
+
+    }
+
+    private void Update()
+    {
+        // Auto Shoot FUnction
+        if (autoBool && Time.time >= timeToFire)
+        {
+            timeToFire = Time.time + 1f / fireRate;
+            OnShoot();
+        }
+        else
+        {
+            //Debug.Log("Player Release Mouse");
+        }
+
+        // Auto Reload Function
+        if (RifleAmmo < FullAmmo)
+        {
+            waitToReload = waitToReload + 1f * Time.deltaTime;
+            if (waitToReload >= timeToDelay)
+            {
+                waitToReload = 0f;
+                OnReload();
+            }
+        }
     }
 
     IEnumerator AmmoDeduct()
@@ -92,7 +126,7 @@ public class Rifle : MonoBehaviour
 
         --RifleAmmo;
         ++AmmoFired;
-        Debug.Log("Ammo Fired: " + AmmoFired);
+        //Debug.Log("Ammo Fired: " + AmmoFired);
         RifleAmmoCount.text = RifleAmmo.ToString();
 
         yield return new WaitForSeconds(0.05f);
@@ -150,12 +184,12 @@ public class Rifle : MonoBehaviour
 
     IEnumerator BulletClear()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(2f);
         Destroy(GameObject.Find("Bullet(Clone)"));
         Destroy(GameObject.Find("Sphere(Clone)"));
     }
 
-    void OnShoot(InputValue shootValue)
+    void OnShoot()
     {
         if (RifleAmmo > 0)
         {
@@ -163,7 +197,7 @@ public class Rifle : MonoBehaviour
             //fire = true;
             StartCoroutine(AmmoDeduct());
             audioSource.PlayOneShot(shell);
-            Debug.Log("Shooting");
+            //Debug.Log("Shooting");
 
             GameObject bullet = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * launchVelocity);
@@ -171,10 +205,16 @@ public class Rifle : MonoBehaviour
         }
     }
 
-    void OnReload(InputValue reloadValue)
+
+    void OnReload()
     {
         reloading = true;
         StartCoroutine(AmmoReload());
-        Debug.Log("Reloading");
+        //Debug.Log("Reloading");
+    }
+
+    void OnAuto()
+    {
+        autoBool = !autoBool;
     }
 }

@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    // Player Prefab
     public GameObject playerPrefab;
 
-    private PlayerController activePlayer;
+    // Zombie Prefab
+    //public GameObject runningZombie;
+    //public GameObject crawingZombie;
+    //public GameObject walkingZombie;
 
+    // Player Controller Script
+    private PlayerController activePlayer;
+    
+    // GameManager Self
     public static GameManager instance;
+
+    public AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         // Check if there is an active GameManager
         // Check if I am the active GameManager
         if (instance != null && instance != this)
@@ -28,7 +40,6 @@ public class GameManager : MonoBehaviour
             // Set the active GameManager as myself
             instance = this;
         }
-
     }
 
     void SpawnPlayerOnLoad(Scene currentScene, Scene nextScence)
@@ -39,11 +50,26 @@ public class GameManager : MonoBehaviour
             // IF is 0, do nothing
 
             //IF is at 0 find Spawn empty script
-            SpawnSpawn spawnSpot = FindObjectOfType<SpawnSpawn>();
+            //SpawnSpawn spawnSpot = FindObjectOfType<SpawnSpawn>();
 
             //Move and rotate the Player to the spawnSport
-            activePlayer.transform.position = spawnSpot.transform.position;
-            activePlayer.transform.rotation = spawnSpot.transform.rotation;
+            //activePlayer.transform.position = spawnSpot.transform.position;
+            //activePlayer.transform.rotation = spawnSpot.transform.rotation;
+            DontDestroyOnLoad(audioSource);
+            audioSource.loop = true;
+            audioSource.Play();
+            Debug.Log("Audio Is Playing: " + audioSource);
+            Destroy(activePlayer);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                StartCoroutine(Wait());
+                audioSource.Pause();
+                Destroy(activePlayer);
+                Destroy(GameObject.Find("Player(Clone)"));
+            }
         }
         else
         {
@@ -51,10 +77,13 @@ public class GameManager : MonoBehaviour
             if (activePlayer == null)
             {
                 //If there is no player, I should spawn one
-                GameObject newPlayer = Instantiate(playerPrefab, new Vector3(0,20,0), Quaternion.identity);
+                GameObject newPlayer = Instantiate(playerPrefab, new Vector3(-28,21,0), Quaternion.identity);
                 // Store the new Player
                 activePlayer = newPlayer.GetComponent<PlayerController>();
                 DontDestroyOnLoad(newPlayer);
+                //DontDestroyOnLoad(crawingZombie);
+                //DontDestroyOnLoad(runningZombie);
+                //DontDestroyOnLoad(walkingZombie);
             }
             else
             {
@@ -66,5 +95,11 @@ public class GameManager : MonoBehaviour
                 activePlayer.transform.rotation = spawnSpot.transform.rotation;
             }
         }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(2);
     }
 }

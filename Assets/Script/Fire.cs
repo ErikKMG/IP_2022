@@ -19,7 +19,7 @@ public class Fire : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Fire")
+        if (collision.gameObject.tag == "Target")
         {
             pain = true;
             
@@ -32,7 +32,7 @@ public class Fire : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Fire")
+        if (collision.gameObject.tag == "Target")
         {
             if (pain)
             {

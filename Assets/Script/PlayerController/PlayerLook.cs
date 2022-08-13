@@ -13,10 +13,10 @@ public class PlayerLook : MonoBehaviour
     public float xSen;
     public float ySen;
 
-    private void Start()
+    private void Awake()
     {
-
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void ProcessLook(Vector2 input) 
