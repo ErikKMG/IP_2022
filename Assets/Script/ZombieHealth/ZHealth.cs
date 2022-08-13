@@ -8,20 +8,33 @@ public class ZHealth : MonoBehaviour
     // Bool to check of Player collided on it
     public bool isChange;
 
+    // Health Cube itself
+    public GameObject self;
+
     // Color Array
     public Color[] ChangeColor;
 
     private int ColorIndex = 0;
 
-    // Sprit Color
-    public SpriteRenderer HealthBar;
+    // Idle Color
+    [SerializeField] private Color idleColor;
 
     // Health UI
     public TextMeshPro HealthUI;
     float Health = 4;
 
+    // Mesh Renderer
+    public MeshRenderer myRenderer;
+
     // Time To Wait In Seconds
     public float TimeSeconds;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        myRenderer.material.color = idleColor;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -45,10 +58,39 @@ public class ZHealth : MonoBehaviour
             else if (Health == 1)
             {
                 // Destry Helth Cube
-                Destroy(gameObject);
+                Destroy(self);
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            if (Health == 4)
+            {
+                // Green to Yellow
+                StartCoroutine(Change());
+            }
+            else if (Health == 3)
+            {
+                // Yellow to Orange
+                StartCoroutine(ChangeOne());
+            }
+            else if (Health == 2)
+            {
+                // Orange to Red
+                StartCoroutine(ChangeTwo());
+            }
+            else if (Health == 1)
+            {
+                // Destry Helth Cube
+                Destroy(self);
+            }
+        }
+    }
+
+
 
     // Change Green to Yellow
     IEnumerator Change()
@@ -58,7 +100,7 @@ public class ZHealth : MonoBehaviour
         if (isChange)
         {
 
-            HealthBar.material.color = ChangeColor[ColorIndex];
+            myRenderer.material.color = ChangeColor[ColorIndex];
 
             --Health;
             HealthUI.text = Health.ToString();
@@ -78,7 +120,7 @@ public class ZHealth : MonoBehaviour
         {
             ++ColorIndex;
 
-            HealthBar.material.color = ChangeColor[ColorIndex];
+            myRenderer.material.color = ChangeColor[ColorIndex];
 
             --Health;
             HealthUI.text = Health.ToString();
@@ -89,7 +131,7 @@ public class ZHealth : MonoBehaviour
 
 
             --ColorIndex;
-            HealthBar.material.color = ChangeColor[ColorIndex];
+            myRenderer.material.color = ChangeColor[ColorIndex];
 
             ++Health;
             HealthUI.text = Health.ToString();
@@ -105,7 +147,7 @@ public class ZHealth : MonoBehaviour
         if (isChange)
         {
             ++ColorIndex;
-            HealthBar.material.color = ChangeColor[ColorIndex];
+            myRenderer.material.color = ChangeColor[ColorIndex];
             --Health;
             HealthUI.text = Health.ToString();
 
@@ -114,11 +156,10 @@ public class ZHealth : MonoBehaviour
             isChange = false;
 
             --ColorIndex;
-            HealthBar.material.color = ChangeColor[ColorIndex];
+            myRenderer.material.color = ChangeColor[ColorIndex];
             ++Health;
             HealthUI.text = Health.ToString();
             yield return new WaitForEndOfFrame();
-            //yield return ToOrange();
         }
     }
 }
