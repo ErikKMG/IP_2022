@@ -28,6 +28,7 @@ public class Rifle : MonoBehaviour
     [SerializeField] bool isEmpty = false;
     [SerializeField] bool isReloaded = false;
     [SerializeField] bool isReloading = false;
+    [SerializeField] bool autoBool;
 
     public Color OReloaded;
 
@@ -50,6 +51,7 @@ public class Rifle : MonoBehaviour
     public AudioClip shell;
     public AudioSource audioSource;
 
+    // Weapon Specs
     public float fireRate = 28f;
     private float timeToFire = 0f;
 
@@ -73,11 +75,21 @@ public class Rifle : MonoBehaviour
 
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        StartCoroutine(AutoShoot());
+        // Auto Shoot FUnction
+        if (autoBool && Time.time >= timeToFire)
+        {
+            timeToFire = Time.time + 1f / fireRate;
+            OnShoot();
+        }
+        else
+        {
+            Debug.Log("Player Release Mouse");
+        }
 
-        if(RifleAmmo < FullAmmo)
+        // Auto Reload Function
+        if (RifleAmmo < FullAmmo)
         {
             waitToReload = waitToReload + 1f * Time.deltaTime;
             if (waitToReload >= timeToDelay)
@@ -177,16 +189,6 @@ public class Rifle : MonoBehaviour
         Destroy(GameObject.Find("Sphere(Clone)"));
     }
 
-    IEnumerator AutoShoot()
-    {
-        yield return new WaitForSeconds(1f);
-        if (Input.GetButton("Fire1") && Time.time >= timeToFire)
-        {
-            timeToFire = Time.time + 1f / fireRate;
-            OnShoot();
-        }
-    }
-
     void OnShoot()
     {
         if (RifleAmmo > 0)
@@ -209,5 +211,10 @@ public class Rifle : MonoBehaviour
         reloading = true;
         StartCoroutine(AmmoReload());
         Debug.Log("Reloading");
+    }
+
+    void OnAuto()
+    {
+        autoBool = !autoBool;
     }
 }
