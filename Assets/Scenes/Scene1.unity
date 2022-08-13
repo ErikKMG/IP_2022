@@ -24216,9 +24216,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd01ade176aae8646a88b0a79567c400, type: 3}
   m_Controller: {fileID: 9100000, guid: f4b66dd19f37ec74395cc1ad04efabe7, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -36116,9 +36116,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd01ade176aae8646a88b0a79567c400, type: 3}
   m_Controller: {fileID: 9100000, guid: f4b66dd19f37ec74395cc1ad04efabe7, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -51068,9 +51068,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd01ade176aae8646a88b0a79567c400, type: 3}
   m_Controller: {fileID: 9100000, guid: f4b66dd19f37ec74395cc1ad04efabe7, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
